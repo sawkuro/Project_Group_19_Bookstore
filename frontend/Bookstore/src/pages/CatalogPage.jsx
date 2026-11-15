@@ -29,8 +29,9 @@ export default function CatalogPage({ books, wishlist, onOpen, onToggle }) {
 
 	return (
 		<>
-			<section className="hero-section">
-				<div className="hero-copy">
+			<section className="hero-section container py-5">
+				<div className="row align-items-center">
+				<div className="hero-copy col-12 col-md-6">
 					<span className="eyebrow">
 						<span className="eyebrow-line" /> YOUR NEXT CHAPTER STARTS HERE
 					</span>
@@ -40,7 +41,7 @@ export default function CatalogPage({ books, wishlist, onOpen, onToggle }) {
 						next page takes you.
 					</p>
 					<button
-						className="hero-cta"
+						className="hero-cta btn btn-primary"
 						onClick={() =>
 							document
 								.getElementById("shelf")
@@ -50,12 +51,13 @@ export default function CatalogPage({ books, wishlist, onOpen, onToggle }) {
 						Explore our catalogue <span>↓</span>
 					</button>
 				</div>
+				</div>
 			</section>
 			<section
-				className="shelf-section"
+				className="shelf-section container py-5"
 				id="shelf"
 			>
-				<div className="section-heading">
+				<div className="section-heading d-flex justify-content-between align-items-end flex-wrap gap-3">
 					<div>
 						<span className="eyebrow">
 							<span className="eyebrow-line" /> Popular Books
@@ -68,20 +70,22 @@ export default function CatalogPage({ books, wishlist, onOpen, onToggle }) {
 						{visibleBooks.length} BOOKS TO EXPLORE
 					</span>
 				</div>
-				<div className="catalog-toolbar">
-					<label className="search-box">
+				<div className="catalog-toolbar d-flex justify-content-between align-items-center flex-wrap gap-3 py-3">
+					<label className="search-box d-flex align-items-center gap-2">
 						<span>⌕</span>
 						<input
+							className="form-control form-control-sm"
 							aria-label="Search books"
 							placeholder="Title, Genere, Author"
 							value={query}
 							onChange={(event) => setQuery(event.target.value)}
 						/>
 					</label>
-					<div className="toolbar-right">
+					<div className="toolbar-right d-flex align-items-center gap-3">
 						<label className="sort-control">
 							<span>Sort</span>
 							<select
+								className="form-select form-select-sm"
 								aria-label="Sort books"
 								value={sort}
 								onChange={(event) => setSort(event.target.value)}
@@ -95,7 +99,7 @@ export default function CatalogPage({ books, wishlist, onOpen, onToggle }) {
 					</div>
 				</div>
 				<div
-					className="genre-row"
+				className="genre-row d-flex flex-wrap gap-2 mb-3"
 					aria-label="Filter by genre"
 				>
 					{genres.map((item) => (
