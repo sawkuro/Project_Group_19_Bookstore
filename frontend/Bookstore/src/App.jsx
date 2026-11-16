@@ -63,47 +63,44 @@ function App() {
 			</div>
 			<header className="site-header container-fluid py-3">
 				<div className="row align-items-center">
-				<div className="col">
-				<button
-					className="wordmark"
-					onClick={() => navigate("catalog")}
-					aria-label="Novel home"
-				>
-					<span className="wordmark-icon">n</span>
-					<span>
-						novel<span className="wordmark-period">.</span>
-					</span>
-				</button>
-				</div>
-				<nav
-					className="main-nav col-auto d-flex gap-3"
-					aria-label="Main navigation"
-				>
-					<button
-						className={page === "catalog" ? "nav-active" : ""}
-						onClick={() => navigate("catalog")}
+					<div className="col">
+						<button
+							className="wordmark"
+							onClick={() => navigate("catalog")}
+							aria-label="Novel home"
+						>
+							<span className="wordmark-icon">n</span>
+							<span>
+								novel<span className="wordmark-period">.</span>
+							</span>
+						</button>
+					</div>
+					<nav
+						className="main-nav col-auto d-flex gap-3"
+						aria-label="Main navigation"
 					>
-						Discover
-					</button>
-					<button
-						className={page === "wishlist" ? "nav-active" : ""}
-						onClick={() => navigate("wishlist")}
-					>
-						Reading list <span className="nav-count">{wishlist.length}</span>
-					</button>
-				</nav>
-				<div className="col d-flex justify-content-end"><button
-					className="header-note"
-					onClick={() => navigate("wishlist")}
-				>
-					<span className="header-note-icon">♡</span>
-					<span>
-						Your next favorite
-						<br />
-						<strong>is waiting.</strong>
-					</span>
-					<span className="header-note-arrow">↗</span>
-				</button></div>
+						<button
+							className={page === "catalog" ? "nav-active" : ""}
+							onClick={() => navigate("catalog")}
+						>
+							Discover
+						</button>
+						<button
+							className={page === "wishlist" ? "nav-active" : ""}
+							onClick={() => navigate("wishlist")}
+						>
+							Wishlist <span className="nav-count">{wishlist.length}</span>
+						</button>
+					</nav>
+					<div className="col d-flex justify-content-end">
+						<button
+							className="header-note"
+							onClick={() => navigate("wishlist")}
+						>
+							<span className="header-note-icon">♡</span>
+							<span>Favorite List</span>
+						</button>
+					</div>
 				</div>
 			</header>
 			<main className="flex-grow-1">
@@ -135,17 +132,20 @@ function App() {
 			</main>
 			<footer className="site-footer container-fluid py-3 mt-auto">
 				<div className="row align-items-center">
-				<div className="col">
-				<button
-					className="wordmark footer-mark"
-					onClick={() => navigate("catalog")}
-				>
-					<span className="wordmark-icon">n</span>
-					<span>
-						novel<span className="wordmark-period">.</span>
-					</span>
-				</button></div>
-				<div className="col text-end"><span className="footer-right">Novel 2026</span></div>
+					<div className="col">
+						<button
+							className="wordmark footer-mark"
+							onClick={() => navigate("catalog")}
+						>
+							<span className="wordmark-icon">n</span>
+							<span>
+								novel<span className="wordmark-period">.</span>
+							</span>
+						</button>
+					</div>
+					<div className="col text-end">
+						<span className="footer-right">Novel 2026</span>
+					</div>
 				</div>
 			</footer>
 			{notice && (

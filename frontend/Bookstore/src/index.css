@@ -2,19 +2,19 @@
 
 :root {
 	font-family: "DM Sans", sans-serif;
-  color: #263956;
-  background: #f5f9ff;
+	color: #263956;
+	background: #f5f9ff;
 	font-synthesis: none;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	font-optical-sizing: auto;
 	font-weight: 400;
-  --ink: #263956;
-  --muted: #788ba6;
-  --paper: #f5f9ff;
-  --line: #dfe9f6;
-  --orange: #e3b94f;
+	--ink: #263956;
+	--muted: #788ba6;
+	--paper: #f5f9ff;
+	--line: #dfe9f6;
+	--orange: #e3b94f;
 	--serif: "Playfair Display", Georgia, serif;
 	--mono: "DM Mono", monospace;
 }
@@ -43,10 +43,10 @@ button:focus-visible,
 a:focus-visible,
 input:focus-visible,
 select:focus-visible {
-  outline: 2px solid #5c8bc4;
+	outline: 2px solid #5c8bc4;
 	outline-offset: 3px;
 }
 ::selection {
 	color: #fff;
-  background: #5c8bc4;
+	background: #5c8bc4;
 }
