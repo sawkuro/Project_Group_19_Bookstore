@@ -58,7 +58,7 @@ function App() {
 	return (
 		<div className="app-shell min-vh-100 d-flex flex-column">
 			<div className="announcement text-center py-2">
-				<span className="announcement-dot" /> Find your next chapter{" "}
+				<span className="announcement-arrow">✦</span> Find your next chapter{" "}
 				<span className="announcement-arrow">✦</span>
 			</div>
 			<header className="site-header container-fluid py-3">
@@ -98,7 +98,7 @@ function App() {
 							onClick={() => navigate("wishlist")}
 						>
 							<span className="header-note-icon">♡</span>
-							<span>Favorite List</span>
+							<span>Your List</span>
 						</button>
 					</div>
 				</div>
