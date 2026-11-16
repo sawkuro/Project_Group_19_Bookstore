@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import BookGrid from "../components/BookGrid";
 
 export default function CatalogPage({ books, wishlist, onOpen, onToggle }) {
@@ -6,22 +6,19 @@ export default function CatalogPage({ books, wishlist, onOpen, onToggle }) {
 	const [genre, setGenre] = useState("All books");
 	const [sort, setSort] = useState("Featured");
 	const genres = ["All books", ...new Set(books.map((book) => book.genre))];
-	const visibleBooks = useMemo(() => {
-		const term = query.trim().toLowerCase();
-		const result = books.filter(
-			(book) =>
-				(genre === "All books" || book.genre === genre) &&
-				(!term ||
-					`${book.title} ${book.author} ${book.genre}`
-						.toLowerCase()
-						.includes(term)),
-		);
-		if (sort === "Top rated") result.sort((a, b) => b.rating - a.rating);
-		if (sort === "Newest") result.sort((a, b) => b.year - a.year);
-		if (sort === "Title A–Z")
-			result.sort((a, b) => a.title.localeCompare(b.title));
-		return result;
-	}, [books, genre, query, sort]);
+	const term = query.trim().toLowerCase();
+	const visibleBooks = books.filter(
+		(book) =>
+			(genre === "All books" || book.genre === genre) &&
+			(!term ||
+				`${book.title} ${book.author} ${book.genre}`
+					.toLowerCase()
+					.includes(term)),
+	);
+	if (sort === "Top rated") visibleBooks.sort((a, b) => b.rating - a.rating);
+	if (sort === "Newest") visibleBooks.sort((a, b) => b.year - a.year);
+	if (sort === "Title A–Z")
+		visibleBooks.sort((a, b) => a.title.localeCompare(b.title));
 	const clearSearch = () => {
 		setQuery("");
 		setGenre("All books");
@@ -31,28 +28,28 @@ export default function CatalogPage({ books, wishlist, onOpen, onToggle }) {
 		<>
 			<section className="hero-section py-5">
 				<div className="container">
-				<div className="row align-items-center">
-					<div className="hero-copy col-12 col-md-6">
-						<span className="eyebrow">
-							<span className="eyebrow-line" /> YOUR NEXT CHAPTER STARTS HERE
-						</span>
-						<h1>Find a book</h1>
-						<p className="hero-description">
-							Follow the clouds to a new world. Browse, wonder, and see where
-							the next page takes you.
-						</p>
-						<button
-							className="hero-cta btn btn-primary"
-							onClick={() =>
-								document
-									.getElementById("shelf")
-									?.scrollIntoView({ behavior: "smooth" })
-							}
-						>
-							Explore our catalogue <span>↓</span>
-						</button>
+					<div className="row align-items-center">
+						<div className="hero-copy col-12 col-md-6">
+							<span className="eyebrow">
+								<span className="eyebrow-line" /> YOUR NEXT CHAPTER STARTS HERE
+							</span>
+							<h1>Find a book</h1>
+							<p className="hero-description">
+								Follow the clouds to a new world. Browse, wonder, and see where
+								the next page takes you.
+							</p>
+							<button
+								className="hero-cta btn btn-primary"
+								onClick={() =>
+									document
+										.getElementById("shelf")
+										?.scrollIntoView({ behavior: "smooth" })
+								}
+							>
+								Explore our catalogue <span>↓</span>
+							</button>
+						</div>
 					</div>
-				</div>
 				</div>
 			</section>
 			<section
