@@ -1,122 +1,163 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import { useEffect, useState } from "react";
+import { seedBooks } from "./data/books";
+import CatalogPage from "./pages/CatalogPage";
+import BookDetailPage from "./pages/BookDetailPage";
+import WishlistPage from "./pages/WishlistPage";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+	const [books, setBooks] = useState(seedBooks);
+	const [page, setPage] = useState("catalog");
+	const [selectedId, setSelectedId] = useState(null);
+	const [wishlist, setWishlist] = useState(() =>
+		JSON.parse(localStorage.getItem("bookshop-wishlist") || "[]"),
+	);
+	const [notice, setNotice] = useState("");
 
-  return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+	useEffect(() => {
+		fetch("/api/books")
+			.then((response) => (response.ok ? response.json() : null))
+			.then((data) => {
+				if (Array.isArray(data) && data.length) setBooks(data);
+			})
+			.catch(() => {});
+	}, []);
 
-      <div className="ticks"></div>
+	useEffect(() => {
+		localStorage.setItem("bookshop-wishlist", JSON.stringify(wishlist));
+	}, [wishlist]);
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+	function toggleWishlist(id) {
+		const wasSaved = wishlist.includes(id);
+		setWishlist((current) =>
+			current.includes(id)
+				? current.filter((item) => item !== id)
+				: [...current, id],
+		);
+		setNotice(
+			wasSaved
+				? "Removed from your reading list"
+				: "Added to your reading list",
+		);
+		window.setTimeout(() => setNotice(""), 2200);
+	}
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+	function navigate(nextPage) {
+		setPage(nextPage);
+		if (nextPage !== "detail") setSelectedId(null);
+		window.scrollTo({ top: 0, behavior: "smooth" });
+	}
+
+	function openBook(id) {
+		setSelectedId(id);
+		navigate("detail");
+	}
+
+	const selectedBook = books.find((book) => book.id === selectedId);
+
+	return (
+		<div className="app-shell min-vh-100 d-flex flex-column">
+			<div className="announcement text-center py-2">
+				<span className="announcement-dot" /> Find your next chapter{" "}
+				<span className="announcement-arrow">✦</span>
+			</div>
+			<header className="site-header container-fluid py-3">
+				<div className="row align-items-center">
+				<div className="col">
+				<button
+					className="wordmark"
+					onClick={() => navigate("catalog")}
+					aria-label="Novel home"
+				>
+					<span className="wordmark-icon">n</span>
+					<span>
+						novel<span className="wordmark-period">.</span>
+					</span>
+				</button>
+				</div>
+				<nav
+					className="main-nav col-auto d-flex gap-3"
+					aria-label="Main navigation"
+				>
+					<button
+						className={page === "catalog" ? "nav-active" : ""}
+						onClick={() => navigate("catalog")}
+					>
+						Discover
+					</button>
+					<button
+						className={page === "wishlist" ? "nav-active" : ""}
+						onClick={() => navigate("wishlist")}
+					>
+						Reading list <span className="nav-count">{wishlist.length}</span>
+					</button>
+				</nav>
+				<div className="col d-flex justify-content-end"><button
+					className="header-note"
+					onClick={() => navigate("wishlist")}
+				>
+					<span className="header-note-icon">♡</span>
+					<span>
+						Your next favorite
+						<br />
+						<strong>is waiting.</strong>
+					</span>
+					<span className="header-note-arrow">↗</span>
+				</button></div>
+				</div>
+			</header>
+			<main className="flex-grow-1">
+				{page === "catalog" && (
+					<CatalogPage
+						books={books}
+						wishlist={wishlist}
+						onOpen={openBook}
+						onToggle={toggleWishlist}
+					/>
+				)}
+				{page === "detail" && (
+					<BookDetailPage
+						book={selectedBook}
+						wishlist={wishlist}
+						onBack={() => navigate("catalog")}
+						onToggle={toggleWishlist}
+					/>
+				)}
+				{page === "wishlist" && (
+					<WishlistPage
+						books={books}
+						wishlist={wishlist}
+						onOpen={openBook}
+						onToggle={toggleWishlist}
+						onDiscover={() => navigate("catalog")}
+					/>
+				)}
+			</main>
+			<footer className="site-footer container-fluid py-3 mt-auto">
+				<div className="row align-items-center">
+				<div className="col">
+				<button
+					className="wordmark footer-mark"
+					onClick={() => navigate("catalog")}
+				>
+					<span className="wordmark-icon">n</span>
+					<span>
+						novel<span className="wordmark-period">.</span>
+					</span>
+				</button></div>
+				<div className="col text-end"><span className="footer-right">Novel 2026</span></div>
+				</div>
+			</footer>
+			{notice && (
+				<div
+					className="toast"
+					role="status"
+				>
+					{notice}
+				</div>
+			)}
+		</div>
+	);
 }
 
-export default App
+export default App;
