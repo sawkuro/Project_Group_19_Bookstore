@@ -28,7 +28,6 @@ export default function BookDetailPage({ book, wishlist, onBack, onToggle }) {
 						book={book}
 						large
 					/>
-					<span className="art-caption">A GOOD BOOK FOR A SLOW AFTERNOON</span>
 				</div>
 				<div className="detail-copy col-12 col-md-7">
 					<span className="eyebrow">
@@ -42,7 +41,7 @@ export default function BookDetailPage({ book, wishlist, onBack, onToggle }) {
 					<div className="detail-rating">
 						<span>★ ★ ★ ★ ★</span>
 						<strong>{Number(book.rating).toFixed(1)}</strong>
-						<small>reader rating</small>
+						<small> reader rating</small>
 					</div>
 					<p className="detail-description">{book.description}</p>
 					<div className="detail-meta">
@@ -51,11 +50,11 @@ export default function BookDetailPage({ book, wishlist, onBack, onToggle }) {
 							<strong>{book.year}</strong>
 						</div>
 						<div>
-							<span>ON THIS SHELF</span>
+							<span>Genre</span>
 							<strong>{book.genre}</strong>
 						</div>
 						<div>
-							<span>YOUR COPY</span>
+							<span>Our Price</span>
 							<strong>${Number(book.price).toFixed(2)}</strong>
 						</div>
 					</div>
@@ -63,12 +62,10 @@ export default function BookDetailPage({ book, wishlist, onBack, onToggle }) {
 						className={`detail-save btn${saved ? " detail-saved" : ""}`}
 						onClick={() => onToggle(book.id)}
 					>
-						{saved
-							? "♥  Saved to your reading list"
-							: "♡  Add to your reading list"}
+						{saved ? "♥  Saved to your wish list" : "♡  Add to your wish list"}
 					</button>
 					<p className="detail-footnote">
-						A good story is even better when you know where to find it again.
+						Save it here to find it easily again.
 					</p>
 				</div>
 			</div>
