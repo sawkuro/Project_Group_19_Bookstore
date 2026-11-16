@@ -29,7 +29,8 @@ export default function CatalogPage({ books, wishlist, onOpen, onToggle }) {
 
 	return (
 		<>
-			<section className="hero-section container py-5">
+			<section className="hero-section py-5">
+				<div className="container">
 				<div className="row align-items-center">
 					<div className="hero-copy col-12 col-md-6">
 						<span className="eyebrow">
@@ -51,6 +52,7 @@ export default function CatalogPage({ books, wishlist, onOpen, onToggle }) {
 							Explore our catalogue <span>↓</span>
 						</button>
 					</div>
+				</div>
 				</div>
 			</section>
 			<section

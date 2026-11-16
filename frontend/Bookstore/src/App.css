@@ -82,11 +82,40 @@
 	align-self: flex-start;
 }
 .hero-section {
+	position: relative;
+	overflow: hidden;
 	border-bottom: 1px solid var(--line);
 	background:
-		radial-gradient(ellipse at 82% 18%, #fff 0, transparent 30%),
-		linear-gradient(145deg, #eef5ff, #f8fbff);
+		radial-gradient(ellipse at 82% 18%, #dceafb 0, transparent 34%),
+		linear-gradient(145deg, #e3effd, #f1f6fd);
 }
+.hero-section::before,
+.hero-section::after {
+	position: absolute;
+	content: "";
+	pointer-events: none;
+	background:
+		radial-gradient(circle at 24% 68%, #c7dbf1 0 22%, transparent 22.5%),
+		radial-gradient(circle at 42% 52%, #d6e5f6 0 29%, transparent 29.5%),
+		radial-gradient(circle at 62% 68%, #c7dbf1 0 23%, transparent 23.5%),
+		radial-gradient(ellipse at 43% 82%, #d3e3f5 0 39%, transparent 39.5%);
+	filter: drop-shadow(0 .6rem 1rem #7898bd45);
+}
+.hero-section::before {
+	top: -2.5rem;
+	right: -4rem;
+	width: min(42rem, 70vw);
+	height: 17rem;
+	opacity: .88;
+}
+.hero-section::after {
+	bottom: -8rem;
+	left: 23%;
+	width: 25rem;
+	height: 13rem;
+	opacity: .7;
+}
+.hero-section > .container { position: relative; z-index: 1; }
 .hero-copy h1,
 .section-heading h2,
 .detail-copy h1 {
