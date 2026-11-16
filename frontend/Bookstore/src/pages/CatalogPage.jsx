@@ -31,26 +31,26 @@ export default function CatalogPage({ books, wishlist, onOpen, onToggle }) {
 		<>
 			<section className="hero-section container py-5">
 				<div className="row align-items-center">
-				<div className="hero-copy col-12 col-md-6">
-					<span className="eyebrow">
-						<span className="eyebrow-line" /> YOUR NEXT CHAPTER STARTS HERE
-					</span>
-					<h1>Find a book</h1>
-					<p className="hero-description">
-						Follow the clouds to a new world. Browse, wonder, and see where the
-						next page takes you.
-					</p>
-					<button
-						className="hero-cta btn btn-primary"
-						onClick={() =>
-							document
-								.getElementById("shelf")
-								?.scrollIntoView({ behavior: "smooth" })
-						}
-					>
-						Explore our catalogue <span>↓</span>
-					</button>
-				</div>
+					<div className="hero-copy col-12 col-md-6">
+						<span className="eyebrow">
+							<span className="eyebrow-line" /> YOUR NEXT CHAPTER STARTS HERE
+						</span>
+						<h1>Find a book</h1>
+						<p className="hero-description">
+							Follow the clouds to a new world. Browse, wonder, and see where
+							the next page takes you.
+						</p>
+						<button
+							className="hero-cta btn btn-primary"
+							onClick={() =>
+								document
+									.getElementById("shelf")
+									?.scrollIntoView({ behavior: "smooth" })
+							}
+						>
+							Explore our catalogue <span>↓</span>
+						</button>
+					</div>
 				</div>
 			</section>
 			<section
@@ -99,7 +99,7 @@ export default function CatalogPage({ books, wishlist, onOpen, onToggle }) {
 					</div>
 				</div>
 				<div
-				className="genre-row d-flex flex-wrap gap-2 mb-3"
+					className="genre-row d-flex flex-wrap gap-2 mb-3"
 					aria-label="Filter by genre"
 				>
 					{genres.map((item) => (
