@@ -8,6 +8,7 @@ export const seedBooks = [
 		year: 2020,
 		rating: 4.2,
 		price: 18.99,
+		image: "https://upload.wikimedia.org/wikipedia/en/8/87/The_Midnight_Library.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original",
 		cover: "midnight",
 		description:
 			"Between life and death there is a library, and within that library, the shelves go on forever. Every book offers a chance to try another life you could have lived.",
@@ -20,6 +21,7 @@ export const seedBooks = [
 		year: 2022,
 		rating: 4.5,
 		price: 19.5,
+		image: "https://images.penguinrandomhouse.com/cover/9780593466490",
 		cover: "tomorrow",
 		description:
 			"A dazzling novel about friendship, creativity, and the worlds we build together, following two friends who create video games across decades.",
@@ -32,6 +34,7 @@ export const seedBooks = [
 		year: 2021,
 		rating: 4.7,
 		price: 21,
+		image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFaJpCGJppN8-RZL2dL3y0TyoIpmXzX0WzMH9KY1Uy-ReI0bMDOIOe5oVO&s=10",
 		cover: "hail",
 		description:
 			"Ryland Grace wakes up alone, light-years from home, with no memory of who he is or how he got there. The answer may be the key to saving Earth.",
@@ -44,6 +47,7 @@ export const seedBooks = [
 		year: 2011,
 		rating: 4.4,
 		price: 17.25,
+		image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGNmKEFO2Zijz3MhR5Ub4WNlgx3bPdup9GdI8BBD6iycv3M3Xlpo5MnyMb&s=10",
 		cover: "achilles",
 		description:
 			"A retelling of the Iliad through the life of Patroclus, from his first meeting with Achilles to the fateful Trojan War.",
@@ -56,6 +60,7 @@ export const seedBooks = [
 		year: 2018,
 		rating: 4.3,
 		price: 16.75,
+		image: "https://m.media-amazon.com/images/I/712TuzAulKL._AC_UF1000,1000_QL80_.jpg",
 		cover: "educated",
 		description:
 			"Born to survivalists in the mountains of Idaho, Tara Westover was seventeen the first time she set foot in a classroom.",
@@ -68,6 +73,7 @@ export const seedBooks = [
 		year: 2018,
 		rating: 4.6,
 		price: 20,
+		image: "https://m.media-amazon.com/images/I/81kg51XRc1L._UF1000,1000_QL80_.jpg",
 		cover: "atomic",
 		description:
 			"A practical guide to building good habits, breaking bad ones, and making small changes that compound into remarkable results.",
@@ -80,6 +86,7 @@ export const seedBooks = [
 		year: 2020,
 		rating: 4.1,
 		price: 15.99,
+		image: "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1773750050i/50202953.jpg",
 		cover: "piranesi",
 		description:
 			"A dreamlike mystery set in a vast House of endless halls, statues, and tides, where one man tries to understand his world.",
@@ -92,6 +99,7 @@ export const seedBooks = [
 		year: 2020,
 		rating: 4,
 		price: 18.5,
+		image: "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1577090827l/51791252.jpg",
 		cover: "vanishing",
 		description:
 			"The lives of twin sisters diverge as one builds a new life far away, and the next generation finds their paths intertwining.",

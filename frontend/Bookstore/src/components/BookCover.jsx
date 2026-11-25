@@ -1,4 +1,16 @@
 export default function BookCover({ book, large = false }) {
+	if (book.image) {
+		return (
+			<img 
+				src={book.image}
+				alt={`Cover of ${book.title}`}
+				className={`book-cover book-cover-img${large ? " book-cover-large" : ""}`}
+			/>
+		);
+	}
+	
+	
+	
 	return (
 		<div
 			className={`book-cover cover-${book.cover}${large ? " book-cover-large" : ""}`}

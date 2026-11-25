@@ -14,6 +14,11 @@ function App() {
 	);
 	const [notice, setNotice] = useState("");
 
+	const [theme, setTheme] = useState(
+		() =>
+	localStorage.getItem("bookshop-theme") || "light",
+	);
+
 	useEffect(() => {
 		fetch("/api/books")
 			.then((response) => (response.ok ? response.json() : null))
@@ -26,6 +31,14 @@ function App() {
 	useEffect(() => {
 		localStorage.setItem("bookshop-wishlist", JSON.stringify(wishlist));
 	}, [wishlist]);
+
+	useEffect(
+		() => {
+		document.body.className = `theme-${theme}`;
+		localStorage.setItem("bookshop-theme", theme);
+		}, [theme]);
+
+
 
 	function toggleWishlist(id) {
 		const wasSaved = wishlist.includes(id);
@@ -56,7 +69,7 @@ function App() {
 	const selectedBook = books.find((book) => book.id === selectedId);
 
 	return (
-		<div className="app-shell min-vh-100 d-flex flex-column">
+		<div className={`app-shell min-vh-100 d-flex flex-column`}>
 			<div className="announcement text-center py-2">
 				<span className="announcement-arrow">✦</span> Find your next chapter{" "}
 				<span className="announcement-arrow">✦</span>
@@ -91,6 +104,20 @@ function App() {
 						>
 							Wishlist <span className="nav-count">{wishlist.length}</span>
 						</button>
+
+
+						<select
+							className="theme-select"
+							value={theme}
+							onChange={(e) => setTheme(e.target.value)}>
+							<option value="light">Light Mode</option>
+
+							<option value="dark">Dark Mode</option>
+							<option value="fantasy">Fantasy</option>
+							<option value="library">Library</option>
+
+						</select>
+
 					</nav>
 					<div className="col d-flex justify-content-end">
 						<button

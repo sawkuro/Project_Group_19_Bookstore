@@ -30,6 +30,9 @@ body {
 	margin: 0;
 	min-width: 360px;
 	min-height: 100vh;
+	background: var(--paper);
+	color: var(--ink);
+
 }
 button,
 input,
@@ -49,4 +52,88 @@ select:focus-visible {
 ::selection {
 	color: #fff;
 	background: #5c8bc4;
+}
+
+
+.theme-light {
+	--ink:#263956;
+	--muted:#788ba6;
+	--paper: #f5f9ff;
+	--line: #dfe9f6;
+	--orange: #e3b94f;
+	--card: #ffffff;
+	--soft: #e8f0fb;
+	--accent: #4c719f;
+	--hero-glow: #dceafb;
+	--hero-a: #e3effd;
+	--hero-b: #f1f6fd;
+	--cloud-1: #c7dbf1;
+	--cloud-2: #d6e5f6;
+	--cloud-3: #d3e3f5;
+	--cloud-shadow: #7898bd45;
+}
+
+.theme-dark {
+	--ink:#f3f4f6;
+	--muted:#a1a1aa;
+	--paper: #111827;
+	--line: #374151;
+	--orange: #fbbf24;
+	--card: #1f2937;
+	--soft: #1e293b;
+	--accent: #6b9ae0;
+	--hero-glow: #1e3050;
+	--hero-a: #172036;
+	--hero-b: #111827;
+	--cloud-1: #243350;
+	--cloud-2: #2b3c5c;
+	--cloud-3: #26364f;
+	--cloud-shadow: #00000066;
+
+}
+
+.theme-fantasy {
+	--ink:#49307f;
+	--muted:#5f5280;
+	--paper: #dbc8f8;
+	--line: #d1c9f1;
+	--orange: #d4af37;
+	--card: #e9d3ff;
+	--soft: #efe7ff;
+	--accent: #7c5cc4;
+	--hero-glow: #e2d4ff;
+	--hero-a: #eadfff;
+	--hero-b: #f8f4ff;
+	--cloud-1: #b6a4d9;
+	--cloud-2: #dacafa;
+	--cloud-3: #dccdfa;
+	--cloud-shadow: #8a6fd045;
+
+}
+
+.theme-library{
+	--ink:#4e342e;
+	--muted:#7b6657;
+	--paper: #f7f1e8;
+	--line: #d7ccc8;
+	--orange: #b8860b;
+	--card: #fffaf2;
+	--soft: #efe4d3;
+	--accent: #7b5236;
+	--hero-glow: #e2cfae;
+	--hero-a: #eadcc5;
+	--hero-b: #f7f1e8;
+	--cloud-1: #dcc9a8;
+	--cloud-2: #e6d6bb;
+	--cloud-3: #dfcdae;
+	--cloud-shadow: #7898bd45;
+
+}
+
+
+.form-control,
+.form-select {
+	background-color: var(--card);
+	color: var(--ink);
+	border-color: var(--line);
 }
